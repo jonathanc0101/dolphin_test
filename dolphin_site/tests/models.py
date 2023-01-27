@@ -44,6 +44,9 @@ class Delfin(models.Model):
     def __str__(self):
         return "{nombre}: {descripcion}".format(nombre = self.nombre,descripcion=self.descripcion)
 
+    class Meta:
+        verbose_name = "delfin"
+        verbose_name_plural = "delfines"
 
 class Atributo(models.Model):
     """para no hardcodear los atributos"""
@@ -61,6 +64,11 @@ class Atributo_Delfin(models.Model):
 
     def __str__(self):
         return "{atributo}: {valor}".format(atributo = self.atributo, valor = self.valor)
+
+    class Meta:
+        verbose_name = "atributo de delfin"
+        verbose_name_plural = "atributo de delfines"
+
 
 class Pregunta(models.Model):
     """una pregunta afecta a un atributo en especifico"""

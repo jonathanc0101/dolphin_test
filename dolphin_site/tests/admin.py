@@ -16,5 +16,4 @@ class DelfinAdmin(admin.ModelAdmin):
 
 admin.site.register(Delfin,DelfinAdmin)
 admin.site.register(Atributo)
-admin.site.register(Atributo_Delfin)
 admin.site.register(Pregunta)
