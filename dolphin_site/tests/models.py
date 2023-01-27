@@ -8,8 +8,9 @@ class Ubicador():
     """se encarga de obtener la menor distancia a todos los delfines y nos dice cual somos"""
     def ubicar(atributos):
         """recibe un diccionario con los atributos"""
-        delfines = Delfin.objects.all()
+        delfines = list(Delfin.objects.all())
         distancias_a_delfines = {}
+
 
         for delfin in delfines:
             atributos_delfin = delfin.get_atributos()
@@ -19,16 +20,18 @@ class Ubicador():
 
             for atributo in atributos_delfin:
 
-                if(atributos[atributo.atributo]): #si el usuario nos dio el atributo entonces lo tenemos en cuenta
-                    suma_cuadrados += (atributo.valor - atributos[atributo.atributo])**2
-            
+                atributo_actual = str(atributo.atributo)
+                
+                if(atributo_actual in atributos): #si el usuario nos dio el atributo entonces lo tenemos en cuenta
+                    suma_cuadrados += (atributo.valor - atributos[atributo_actual])**2
+                
             distancias_a_delfines[delfin.id] = sqrt(suma_cuadrados)
         
         min_value = min(distancias_a_delfines.values())
 
         #retornamos el primero de los menores valores encontrados (en caso de que se repitan)
-        result = [key for key, value in distancias_a_delfines.iteritems() if value == min_value][0]
-
+        result = [key for key, value in distancias_a_delfines.items() if value == min_value][0]
+        return result
         
 
 class Delfin(models.Model):
