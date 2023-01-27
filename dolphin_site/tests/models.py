@@ -61,3 +61,9 @@ class Atributo_Delfin(models.Model):
 
     def __str__(self):
         return "{atributo}: {valor}".format(atributo = self.atributo, valor = self.valor)
+
+class Pregunta(models.Model):
+    """una pregunta afecta a un atributo en especifico"""
+    atributo = models.ForeignKey(Atributo, on_delete=models.CASCADE)
+    texto = models.CharField(max_length=200)
+    valor = models.IntegerField(default=0,validators=[MinValueValidator(-2),MaxValueValidator(2)])
