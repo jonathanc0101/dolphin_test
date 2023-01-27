@@ -19,3 +19,34 @@ DEV:
 Vas a usar bootstrap o algo así para que se vea bien la página.
 Vas a hacer paginas con templates de django.
 Vas a hacer deploy a DigitalOcean usando fabric
+
+
+
+paginas:
+
+    P0: pagina principal (de bienvenida)
+
+    P1: pagina del test (formulario)
+
+    P2: pagina de respuesta (resultado)
+
+flujo de las paginas:
+    
+    P0-->P1-->P2
+
+dificultad:
+
+    P0: facil
+    P1: facil
+    P2: media
+
+orden de manofactura de cada pagina:
+    
+    P0-->P1-->P2
+
+tareas a concretar de P0:
+
+    hacer un croquis muy simple
+    repasar y usar bootstrap para implementar esto
+    pulir asperezas
+    colocar enlace a P1
