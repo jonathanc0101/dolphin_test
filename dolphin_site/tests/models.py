@@ -7,7 +7,7 @@ from math import sqrt
 class Ubicador():
     """se encarga de obtener la menor distancia a todos los delfines y nos dice cual somos"""
     def ubicar(atributos):
-        """recibe un diccionario con los atributos"""
+        """recibe un diccionario con los atributos, retorna el delfin mas cercano"""
         delfines = list(Delfin.objects.all())
         distancias_a_delfines = {}
 
@@ -30,8 +30,8 @@ class Ubicador():
         min_value = min(distancias_a_delfines.values())
 
         #retornamos el primero de los menores valores encontrados (en caso de que se repitan)
-        result = [key for key, value in distancias_a_delfines.items() if value == min_value][0]
-        return result
+        result_id = [key for key, value in distancias_a_delfines.items() if value == min_value][0]
+        return Delfin.objects.get(pk=result_id)
         
 
 class Delfin(models.Model):
