@@ -3,9 +3,14 @@ from django.http import HttpResponse
 
 # Create your views here.
 
-from .models import Ubicador
+from .models import Delfin,Pregunta
 
 def index(request):
-    delfin_ubicado = Ubicador.ubicar({"Tranquilidad":0,"Calma":-2,"Irritabilidad":-1,"Amabilidad":-1})
-    atributos_delfin = [str(x) for x in delfin_ubicado.get_atributos()]
-    return HttpResponse(str([str(delfin_ubicado),atributos_delfin]))#test
+    num_delfines = len(Delfin.objects.all())
+    context = {"num_delfines":num_delfines}
+    return render(request, 'index.html',context)
+
+def test(request):
+    num_preguntas=len(Pregunta.objects.all())
+    context = {"num_preguntas":num_preguntas}
+    return render(request, 'test.html',context)
