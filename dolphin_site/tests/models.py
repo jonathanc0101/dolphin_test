@@ -74,4 +74,11 @@ class Pregunta(models.Model):
     """una pregunta afecta a un atributo en especifico"""
     atributo = models.ForeignKey(Atributo, on_delete=models.CASCADE)
     texto = models.CharField(max_length=200)
-    valor = models.IntegerField(default=0,validators=[MinValueValidator(-2),MaxValueValidator(2)])
+    positivo = models.BooleanField(default=True)
+
+    def __str__(self):
+        positivo_mostrar = "positivo"
+        if(not self.positivo):
+            positivo_mostrar = "negativo"
+            
+        return "{atributo}/{positivo}: {texto}".format(atributo = self.atributo, positivo = positivo_mostrar, texto = self.texto)

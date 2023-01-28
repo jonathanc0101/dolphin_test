@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Lista de preguntas</h1>
+  {% if pregunta_list %}
+  <ul>
+    {% for pregunta in pregunta_list %}
+      <li>
+        {{ pregunta.texto }}
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>No hay preguntas.</p>
+  {% endif %}
+{% endblock %}

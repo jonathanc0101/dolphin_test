@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.views import generic
 
 # Create your views here.
 
@@ -7,10 +7,11 @@ from .models import Delfin,Pregunta
 
 def index(request):
     num_delfines = len(Delfin.objects.all())
-    context = {"num_delfines":num_delfines}
-    return render(request, 'index.html',context)
+    num_preguntas = len(Pregunta.objects.all())
 
-def test(request):
-    num_preguntas=len(Pregunta.objects.all())
-    context = {"num_preguntas":num_preguntas}
-    return render(request, 'test.html',context)
+    context = {"num_delfines":num_delfines,"num_preguntas":num_preguntas}
+    
+    return render(request, 'tests/index.html',context)
+
+class PreguntaListView(generic.ListView):
+    model = Pregunta
