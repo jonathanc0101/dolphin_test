@@ -10,4 +10,17 @@
   <p>En total son {{ num_preguntas }} preguntas y no va a tomarte mas de 5 minutos.</p>
   <h2>Que tengas suerte!</h2>
 
+  <h3>Las {{num_actual_preguntas}} preguntas son:</h3>
+  {% if pregunta_list %}
+  <ul>
+    {% for pregunta in pregunta_list %}
+      <li>
+        {{ pregunta.texto }}
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>No hay preguntas.</p>
+  {% endif %}
+  
 {% endblock %}

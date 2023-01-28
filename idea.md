@@ -37,8 +37,8 @@ flujo de las paginas:
 dificultad:
 
     P0: facil
-    P1: facil
-    P2: media
+    P1: casi facil (hay que colocar las preguntas y los atributos)
+    P2: media (hay que hacer imagenes y escribir para cada delfin)
 
 orden de manofactura de cada pagina:
     

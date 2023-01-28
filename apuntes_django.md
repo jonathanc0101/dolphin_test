@@ -8,5 +8,8 @@ cambios en el modelo de django:
 
 
 la logica va en:
-    los modelos
     <!-- DUH... esperaba que sea en los services, pero no hay-->
+    los modelos
+    
+    <!-- ver que son -->
+    signals
