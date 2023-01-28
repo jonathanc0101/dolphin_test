@@ -4,7 +4,7 @@ import random
 # Create your views here.
 
 from .models import Delfin, Pregunta
-
+from .forms.forms import ResponderPreguntaForm
 
 def index(request):
     num_delfines = len(Delfin.objects.all())
@@ -25,7 +25,10 @@ def test(request):
     pregunta_list = list(Pregunta.objects.all())
     pregunta_list = random.sample(pregunta_list, num_actual_preguntas)
 
-    context = {"num_preguntas": num_preguntas,
-               "pregunta_list": pregunta_list, "num_actual_preguntas": num_actual_preguntas}
+    context = {}
+    context["num_preguntas"] = num_preguntas
+    context["pregunta_list"] = pregunta_list
+    context["num_actual_preguntas"] = num_actual_preguntas
+    context["form"] = ResponderPreguntaForm(pregunta_list)
 
     return render(request, 'tests/test.html', context)

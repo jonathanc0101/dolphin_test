@@ -1,26 +1,27 @@
-{% extends "base_generic.html" %}
-
-{% block title %}
+{% extends "base_generic.html" %} {% block title %}
 <title>Test de delfinismo</title>
-{% endblock %}
+{% endblock %} {% block content %}
+<h1>Antes de hacer el test:</h1>
+<p>
+  Mientras mas fuerte sea tu respuesta (muy en desacuerdo/muy de acuerdo) mas
+  preciso va a ser el test.
+</p>
+<p>
+  En total son {{ num_actual_preguntas }} preguntas y no va a tomarte mas de 5
+  minutos.
+</p>
+<h2>Que tengas suerte!</h2>
 
-{% block content %}
-  <h1>Antes de hacer el test:</h1>
-  <p>Mientras mas fuerte sea tu respuesta (muy en desacuerdo/muy de acuerdo) mas preciso va a ser el test.</p>
-  <p>En total son {{ num_preguntas }} preguntas y no va a tomarte mas de 5 minutos.</p>
-  <h2>Que tengas suerte!</h2>
+{% if pregunta_list %}
 
+<form action="/responder/" method="POST">
   <h3>Las {{num_actual_preguntas}} preguntas son:</h3>
-  {% if pregunta_list %}
-  <ul>
-    {% for pregunta in pregunta_list %}
-      <li>
-        {{ pregunta.texto }}
-      </li>
-    {% endfor %}
-  </ul>
-  {% else %}
-    <p>No hay preguntas.</p>
-  {% endif %}
-  
-{% endblock %}
+
+      {{form.as_ul}}
+
+  <input type="submit" value="OK" />
+</form>
+
+{% else %}
+<p>No hay preguntas.</p>
+{% endif %} {% endblock %}
