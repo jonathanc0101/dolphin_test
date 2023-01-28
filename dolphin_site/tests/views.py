@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from django.views import generic
 import random
+
 # Create your views here.
 
-from .models import Delfin, Pregunta
+from .models import Delfin, Pregunta, Ubicador
 from .forms.forms import ResponderPreguntaForm
+from django.shortcuts import redirect
 
 def index(request):
     num_delfines = len(Delfin.objects.all())
@@ -32,3 +34,18 @@ def test(request):
     context["form"] = ResponderPreguntaForm(pregunta_list)
 
     return render(request, 'tests/test.html', context)
+
+def responder(request):
+    if request.method=='POST':
+
+        respuesta_procesada = dict(request.POST)
+        respuesta_procesada.pop("csrfmiddlewaretoken",None)
+
+        for item,val in respuesta_procesada.items():
+            respuesta_procesada[item] = int(val[0])
+
+        if(len(respuesta_procesada)>0): ##es valido
+            id_delfin = Ubicador.ubicar_respuestas(respuesta_procesada).pk
+            return redirect('delfin-detail', pk=id_delfin)
+    
+    

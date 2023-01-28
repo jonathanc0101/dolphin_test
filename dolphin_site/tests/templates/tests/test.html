@@ -14,7 +14,7 @@
 
 {% if pregunta_list %}
 
-<form action="/responder/" method="POST">
+<form action="{% url 'responder' %}" method="POST">
   <h3>Las {{num_actual_preguntas}} preguntas son:</h3>
 
       {{form.as_ul}}

@@ -1,10 +1,11 @@
 
 from django.urls import path
 
-from . import views
+from .views import index,test,DelfinDetailView,responder
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('test', views.test, name='test'),
-    path('delfin/<int:pk>', views.DelfinDetailView.as_view(), name='delfin-detail'),
+    path('', index, name='index'),
+    path('test', test, name='test'),
+    path('delfin/<int:pk>', DelfinDetailView.as_view(), name='delfin-detail'),
+    path('responder', responder, name='responder'),
 ]

@@ -6,6 +6,25 @@ from math import sqrt
 
 class Ubicador():
     """se encarga de obtener la menor distancia a todos los delfines y nos dice cual somos"""
+
+
+    def ubicar_respuestas(ids_valores_respuestas_dict):
+        """recibe un diccionario {id:valor} de cada una de las respuestas"""
+        atributos = {}
+
+        for id,valor in ids_valores_respuestas_dict.items():
+            # obtenemos el atributo
+            pregunta = Pregunta.objects.get(pk=id)
+            atrib = pregunta.atributo
+
+            if(atrib.descripcion not in atributos):
+                atributos[atrib.descripcion] = 0   
+            
+            atributos[atrib.descripcion] += valor
+            
+
+        return Ubicador.ubicar(atributos)
+
     def ubicar(atributos):
         """recibe un diccionario con los atributos, retorna el delfin mas cercano"""
         delfines = list(Delfin.objects.all())
