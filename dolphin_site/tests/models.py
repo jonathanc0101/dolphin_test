@@ -60,7 +60,7 @@ class Atributo_Delfin(models.Model):
     """un delfin tiene muchos atributos"""
     delfin = models.ForeignKey(Delfin, on_delete=models.CASCADE)
     atributo = models.ForeignKey(Atributo, on_delete=models.CASCADE)
-    valor = models.IntegerField(default=0,validators=[MinValueValidator(-2),MaxValueValidator(2)])
+    valor = models.IntegerField(default=0,validators=[MinValueValidator(-10),MaxValueValidator(10)])
 
     def __str__(self):
         return "{atributo}: {valor}".format(atributo = self.atributo, valor = self.valor)
@@ -68,6 +68,7 @@ class Atributo_Delfin(models.Model):
     class Meta:
         verbose_name = "atributo de delfin"
         verbose_name_plural = "atributo de delfines"
+        ordering = ['atributo']
 
 
 class Pregunta(models.Model):
@@ -80,5 +81,5 @@ class Pregunta(models.Model):
         positivo_mostrar = "positivo"
         if(not self.positivo):
             positivo_mostrar = "negativo"
-            
+
         return "{atributo}/{positivo}: {texto}".format(atributo = self.atributo, positivo = positivo_mostrar, texto = self.texto)

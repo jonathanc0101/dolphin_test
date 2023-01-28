@@ -15,3 +15,6 @@ def index(request):
 
 class PreguntaListView(generic.ListView):
     model = Pregunta
+
+class DelfinDetailView(generic.DetailView):
+    model = Delfin

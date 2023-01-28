@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Conocete como delfín:</h1>
+
+  <p>Tu nombre es <strong> {{ delfin.nombre }}: </strong></p>
+  <p>{{ delfin.descripcion }}</p>
+
+  <ul>
+    {% for atributo in delfin.get_atributos %}
+      <li>
+        {{ atributo.atributo }}
+        {{ atributo.valor }}
+      </li>
+    {% endfor %}
+  </ul>
+
+{% endblock %}
