@@ -56,6 +56,7 @@ class Ubicador():
 class Delfin(models.Model):
     nombre = models.CharField(max_length=200)
     descripcion = models.CharField(max_length=300)
+    foto_url = models.CharField(max_length=400)
     
     def get_atributos(self):
         return list(Atributo_Delfin.objects.filter(delfin=self))
