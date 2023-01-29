@@ -15,8 +15,8 @@
 {% if pregunta_list %}
 
 <form action="{% url 'responder' %}" method="POST">
+  {% csrf_token %}
   <h3>Las {{num_actual_preguntas}} preguntas son:</h3>
-
       {{form.as_ul}}
 
   <input type="submit" value="OK" />
