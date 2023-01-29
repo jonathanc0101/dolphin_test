@@ -81,13 +81,13 @@ delfines = [
     },
     {
         "nombre":       "Alejandra",
-        "descripcion":  "Es la máquina perfecta de matar.",
+        "descripcion":  "La naturaleza la convirtió en una máquina perfecta de matar.",
         "foto_url":     "https://i0.wp.com/imgs.hipertextual.com/wp-content/uploads/2016/03/orca.jpg?w=1560&ssl=1"
     },
     {
-        "nombre":       "",
-        "descripcion":  "",
-        "foto_url":     ""
+        "nombre":       "Uriel",
+        "descripcion":  "Uriel nunca encajó, de hecho ni siquiera es un delfín, pero decidimos darle un lugar porque es buena persona y no le hace mal a nadie.",
+        "foto_url":     "https://dondevive.net/wp-content/uploads/2018/01/manati.jpg"
     },
     {
         "nombre":       "",
