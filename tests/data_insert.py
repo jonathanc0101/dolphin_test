@@ -90,9 +90,9 @@ delfines = [
         "foto_url":     "https://dondevive.net/wp-content/uploads/2018/01/manati.jpg"
     },
     {
-        "nombre":       "",
-        "descripcion":  "",
-        "foto_url":     ""
+        "nombre":       "Ernie",
+        "descripcion":  "Es una marsopa, altamente sociable, le gusta hacer chistes para entretener a los demás, dice que alegrarle el dia a otros le alegra su propio día.",
+        "foto_url":     "https://imgs.search.brave.com/CDWakgF2B7B71SSdiJ5T8qwtTF1YQUGYff5WHDibNFk/rs:fit:766:225:1/g:ce/aHR0cHM6Ly90c2Uy/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5k/OFp4OXBlNXpod243/aDc3cmxOU1pnQUFB/QSZwaWQ9QXBp"
     },
     {
         "nombre":       "",
