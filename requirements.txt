@@ -2,7 +2,6 @@ asgiref==3.6.0
 bcrypt==4.0.1
 cffi==1.15.1
 cryptography==39.0.0
-dj-database-url==1.2.0
 Django==3.1.4
 django-crispy-forms==1.14.0
 fabric==3.0.0
