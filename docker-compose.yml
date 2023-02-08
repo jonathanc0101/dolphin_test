@@ -14,8 +14,8 @@ services:
       - db
     volumes:
       -  .:/usr/src/app
-    expose:
-      - 8000
+    ports:
+      - 8000:8000
   db:
     image: mysql:8.0.26
     restart: always
@@ -35,15 +35,15 @@ services:
       - my-db:/var/lib/mysql
 volumes:
   my-db:
-  
-# Names our volume
-  nginx:
-    environment:
-      - DOCKER_CLIENT_TIMEOUT=1200
-      - COMPOSE_HTTP_TIMEOUT=1200
-    build: ./nginx
-    ports:
-      - 80:80
-      - 443:443
-    depends_on:
-      - web
+
+# # Names our volume
+#   nginx:
+#     environment:
+#       - DOCKER_CLIENT_TIMEOUT=1200
+#       - COMPOSE_HTTP_TIMEOUT=1200
+#     build: ./nginx
+#     ports:
+#       - 80:80
+#       - 443:443
+#     depends_on:
+#       - web
