@@ -36,8 +36,8 @@ services:
 # Names our volume
   nginx:
     environment:
-      - DOCKER_CLIENT_TIMEOUT=120
-      - COMPOSE_HTTP_TIMEOUT=120
+      - DOCKER_CLIENT_TIMEOUT=1200
+      - COMPOSE_HTTP_TIMEOUT=1200
     build: ./nginx
     ports:
       - 80:80
