@@ -14,8 +14,8 @@ services:
       - db
     volumes:
       -  .:/usr/src/app
-    ports:
-      - 8000:8000
+    expose:
+      - 8000
   db:
     image: mysql:5.7
     restart: always
