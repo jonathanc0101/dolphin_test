@@ -17,7 +17,7 @@ services:
     expose:
       - 8000
   db:
-    image: mysql:5.7
+    image: mysql:8.0.26
     restart: always
     environment:
       MYSQL_DATABASE: 'db'
