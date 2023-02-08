@@ -20,6 +20,8 @@ services:
     image: mysql:8.0.26
     restart: always
     environment:
+      MYSQL_PORT: 3306  # cannot change this port to other number
+      
       MYSQL_DATABASE: 'db'
       # So you don't have to use root, but you can if you like
       MYSQL_USER: 'user'
