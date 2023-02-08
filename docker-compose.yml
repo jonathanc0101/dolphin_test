@@ -18,25 +18,19 @@ services:
       - 8000
   db:
     image: mysql:8.0.26
+    container_name: mysql_db
     command: --default-authentication-plugin=mysql_native_password
     restart: always
-    container_name: mysql_db
-    environment:
-      MYSQL_PORT: 3306  # cannot change this port to other number
-
-      MYSQL_DATABASE: 'db'
-      # So you don't have to use root, but you can if you like
-      MYSQL_USER: 'user'
-      # You can use whatever password you like
-      MYSQL_PASSWORD: 'password'
-      # Password for root access
-      MYSQL_ROOT_PASSWORD: 'password'
+    env_file:
+      - ./.envs/.prod/.mysql
     expose:
       # Opens port 3306 on the container
       - 3306
       # Where our data will be persisted
     volumes:
-      - my-db:/var/lib/mysql
+      - type: bind
+        source: /srv/dolphin_test/mysql
+        target: /var/lib/mysql
 
 # Names our volume
   nginx:
@@ -45,7 +39,7 @@ services:
       - COMPOSE_HTTP_TIMEOUT=1200
     build: ./nginx
     ports:
-      - 80:80
+      - 1337:80
       - 443:443
     depends_on:
       - web
