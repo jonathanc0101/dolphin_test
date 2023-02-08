@@ -25,7 +25,7 @@ SECRET_KEY = 'ex2j#caar!ds+2oxlc@i^4)go$)gtkg(ekv7#3*$v-b*i)25$!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["165.22.69.141","localhost","127.0.0.1","0.0.0.0"]
+ALLOWED_HOSTS = ["164.92.78.80","localhost","127.0.0.1","0.0.0.0"]
 
 
 # Application definition
