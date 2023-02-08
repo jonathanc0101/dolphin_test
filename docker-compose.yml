@@ -14,8 +14,8 @@ services:
       - db
     volumes:
       -  .:/usr/src/app
-    ports:
-      - 8000:8000
+    expose:
+      - 8000
   db:
     image: mysql:8.0.26
     command: --default-authentication-plugin=mysql_native_password
@@ -31,23 +31,23 @@ services:
       MYSQL_PASSWORD: 'password'
       # Password for root access
       MYSQL_ROOT_PASSWORD: 'password'
-    ports:
+    expose:
       # Opens port 3306 on the container
-      - 3306:3306
+      - 3306
       # Where our data will be persisted
     volumes:
       - my-db:/var/lib/mysql
 volumes:
   my-db:
 
-# # Names our volume
-#   nginx:
-#     environment:
-#       - DOCKER_CLIENT_TIMEOUT=1200
-#       - COMPOSE_HTTP_TIMEOUT=1200
-#     build: ./nginx
-#     ports:
-#       - 80:80
-#       - 443:443
-#     depends_on:
-#       - web
+# Names our volume
+  nginx:
+    environment:
+      - DOCKER_CLIENT_TIMEOUT=1200
+      - COMPOSE_HTTP_TIMEOUT=1200
+    build: ./nginx
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - web
