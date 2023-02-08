@@ -4,7 +4,7 @@ import random
 
 # Create your views here.
 
-from .models import Delfin, Pregunta, Ubicador
+from .models import Delfin, Pregunta, Ubicador, Atributo
 from .forms.forms import ResponderPreguntaForm
 from django.shortcuts import redirect
 
@@ -22,16 +22,27 @@ class DelfinDetailView(generic.DetailView):
 
 
 def test(request):
-    num_actual_preguntas = 20
-    num_preguntas = len(Pregunta.objects.all())
-    pregunta_list = list(Pregunta.objects.all())
-    pregunta_list = random.sample(pregunta_list, num_actual_preguntas)
+
+    atributos = list(Atributo.objects.all())
+
+    preguntas_por_atributo = 3
+    cant_atributos = len(atributos)
+    num_actual_preguntas = preguntas_por_atributo * cant_atributos
+
+    pregunta_list = Pregunta.objects.all()
+    pregunta_list_real = []
+    num_preguntas = len(pregunta_list)
+
+
+    for atributo in atributos:
+        pregunta_list_real.extend(random.sample(list(Pregunta.objects.filter(atributo=atributo)), preguntas_por_atributo))
+
 
     context = {}
     context["num_preguntas"] = num_preguntas
-    context["pregunta_list"] = pregunta_list
+    context["pregunta_list"] = pregunta_list_real
     context["num_actual_preguntas"] = num_actual_preguntas
-    context["form"] = ResponderPreguntaForm(pregunta_list)
+    context["form"] = ResponderPreguntaForm(pregunta_list_real)
 
     return render(request, 'tests/test.html', context)
 

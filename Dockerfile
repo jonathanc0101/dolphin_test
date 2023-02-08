@@ -5,8 +5,8 @@ RUN apt-get update -y
 RUN apt-get install make build-essential curl wget git python-dev python-pip  libxml2-dev libxmlsec1-dev -y
 
 # set environment variables
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
+# ENV PYTHONDONTWRITEBYTECODE 1
+# ENV PYTHONUNBUFFERED 1
 
 COPY . /usr/src/app
 RUN mkdir -p /usr/src/app/static

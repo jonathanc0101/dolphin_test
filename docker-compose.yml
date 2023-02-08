@@ -8,13 +8,14 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: /usr/src/app/scripts/start_app.sh
+    command: python /usr/src/app/manage.py runserver 0.0.0.0:8000
+    # command: /usr/src/app/scripts/start_app.sh
     depends_on:
       - db
     volumes:
       -  .:/usr/src/app
-    expose:
-      - 8000
+    ports:
+      - 8000:8000
   db:
     image: mysql:5.7
     restart: always
