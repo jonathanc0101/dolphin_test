@@ -33,6 +33,9 @@ services:
       # Where our data will be persisted
     volumes:
       - my-db:/var/lib/mysql
+volumes:
+  my-db:
+  
 # Names our volume
   nginx:
     environment:
@@ -44,6 +47,3 @@ services:
       - 443:443
     depends_on:
       - web
-
-volumes:
-  my-db:
