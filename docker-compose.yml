@@ -35,6 +35,9 @@ services:
       - my-db:/var/lib/mysql
 # Names our volume
   nginx:
+    environment:
+      - DOCKER_CLIENT_TIMEOUT=120
+      - COMPOSE_HTTP_TIMEOUT=120
     build: ./nginx
     ports:
       - 8000:80
