@@ -1,0 +1,35 @@
+version: '3.3'
+services:
+  web:
+    restart: always
+
+    image: dolphin-site-web
+     
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: python /usr/src/app/manage.py runserver 0.0.0.0:8000
+    depends_on:
+      - db
+    volumes:
+      -  .:/usr/src/app
+    ports:
+      - 8000:8000
+  db:
+    image: mysql:8.0.26
+    container_name: mysql_db
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    env_file:
+      - ./.envs/.prod/.mysql
+    expose:
+      # Opens port 3306 on the container
+      - 3306
+      # Where our data will be persisted
+    volumes:
+      - type: bind
+        source: /srv/dolphin_test/mysql
+        target: /var/lib/mysql
+
+volumes:
+  my-db:
